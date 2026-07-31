@@ -75,16 +75,16 @@ const Projects = () => {
             {projects.map((project, index) => (
               <div key={project.title} className={`flex flex-col ${index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-10`}>
                 
-                <div className="w-full md:w-3/5 relative cursor-pointer">
+                <div className="w-full md:w-5/12 relative cursor-pointer">
                   <div className="absolute inset-0 bg-primary/20 rounded-xl blur-lg transition-all duration-300"></div>
                   <ProjectGallery images={project.images} />
                 </div>
 
-                <div className={`w-full md:w-2/5 flex flex-col ${index % 2 !== 0 ? 'md:items-start' : 'md:items-end md:text-right'}`}>
+                <div className={`w-full md:w-7/12 flex flex-col ${index % 2 !== 0 ? 'md:items-start' : 'md:items-end md:text-right'}`}>
                   <p className="text-accent font-mono mb-2">Featured Project</p>
                   <h3 className="text-3xl font-bold font-poppins mb-6 text-white">{project.title}</h3>
                   
-                  <div className="glass-card p-6 mb-6 z-10 w-full md:w-[110%] md:-ml-[5%] shadow-xl">
+                  <div className="glass-card p-6 mb-6 z-10 w-full shadow-xl">
                     <p className="text-gray-300 leading-relaxed">{project.description}</p>
                   </div>
 

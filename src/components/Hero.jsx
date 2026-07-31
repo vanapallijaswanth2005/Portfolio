@@ -70,10 +70,8 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
            <div className="absolute inset-0 bg-primary/20 rounded-xl blur-2xl transition-all duration-300"></div>
-           <div className="relative rounded-xl overflow-hidden border border-white/10 glass-card bg-[#030712]">
-              <div className="w-full h-full scale-[1.12] -translate-y-[6%]">
-                 <img src="/careerlink-admin.png" alt="Dashboard" className="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity duration-300 hover:scale-105 transform" />
-              </div>
+           <div className="relative rounded-xl overflow-hidden border border-white/10 glass-card bg-[#030712] aspect-[4/3] flex items-center justify-center">
+              <img src="/hero-art.png" alt="Futuristic Development Art" className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300 hover:scale-105 transform" />
            </div>
         </motion.div>
 

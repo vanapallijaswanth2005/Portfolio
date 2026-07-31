@@ -2,11 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const timeline = [
-  { year: '2022', title: 'Started B.Tech', description: 'Enrolled in Computer Science Engineering at Raghu Engineering College.' },
-  { year: '2023', title: 'Learned Java & DSA', description: 'Mastered Java basics and started solving Data Structures & Algorithms problems.' },
-  { year: '2024', title: 'Built Spring Boot Projects', description: 'Transitioned to backend development, learning Spring Boot and RESTful APIs.' },
-  { year: '2025', title: 'Student Placement Portal', description: 'Developed an enterprise-level full-stack backend application.' },
-  { year: '2026', title: 'Looking for SDE Roles', description: 'Actively seeking Software Development Engineer opportunities.' }
+  { year: '2023', title: 'Started B.Tech', description: 'Enrolled in Computer Science Engineering at Raghu Engineering College.' },
+  { year: '2024', title: 'Learned Java & DSA', description: 'Mastered Java basics and started solving Data Structures & Algorithms problems.' },
+  { year: '2025', title: 'Built Spring Boot Projects', description: 'Transitioned to backend development, learning Spring Boot and RESTful APIs.' },
+  { year: '2026', title: 'Student Placement Portal', description: 'Developed an enterprise-level full-stack backend application.' }
 ];
 
 const Timeline = () => {

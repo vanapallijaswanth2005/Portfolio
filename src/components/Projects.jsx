@@ -1,33 +1,61 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Github, ExternalLink } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Github, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const projects = [
   {
-    title: 'Student Placement Portal',
-    description: 'An enterprise-level full-stack backend application that simplifies the placement process. It features secure JWT authentication, role-based authorization, resume parsing, and cloud storage.',
-    tech: ['Java 21', 'Spring Boot 3.4', 'JWT', 'MySQL', 'AWS S3'],
+    title: 'CareerLink - Placement Portal',
+    description: 'An enterprise-level full-stack backend application that simplifies the placement process. It features secure JWT authentication, role-based authorization, resume parsing, cloud storage, and intuitive dashboards for students, recruiters, and admins.',
+    tech: ['Java 21', 'Spring Boot 3.4', 'JWT', 'MySQL', 'AWS S3', 'React'],
     github: '#',
     demo: '#',
-    image: '/project_mockup.png'
-  },
-  {
-    title: 'Employee Management System',
-    description: 'A robust Spring Boot application for managing employee records, payroll, and attendance with advanced reporting capabilities and RESTful integration.',
-    tech: ['Spring Boot', 'Hibernate', 'MySQL', 'React'],
-    github: '#',
-    demo: '#',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop'
-  },
-  {
-    title: 'E-Commerce REST API',
-    description: 'Scalable backend API for an e-commerce platform featuring product catalog, shopping cart, order processing, and payment gateway integration.',
-    tech: ['Java', 'Spring Security', 'PostgreSQL', 'Redis'],
-    github: '#',
-    demo: '#',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1950&auto=format&fit=crop'
+    images: [
+      '/careerlink-admin.png',
+      '/careerlink-student.png',
+      '/careerlink-company.png'
+    ]
   }
 ];
+
+const ProjectGallery = ({ images }) => {
+  if (!images || images.length === 0) return null;
+
+  return (
+    <div className="flex flex-col gap-4">
+      {/* Main Image */}
+      <div className="relative rounded-xl overflow-hidden border border-white/10 glass-card aspect-video group cursor-pointer shadow-lg bg-[#030712]">
+        <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
+        <div className="w-full h-full scale-[1.12] -translate-y-[6%]">
+          <img 
+            src={images[0]} 
+            alt="Dashboard Screenshot" 
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            onError={(e) => { e.target.src = "https://via.placeholder.com/800x450?text=Dashboard" }}
+          />
+        </div>
+      </div>
+      
+      {/* Thumbnails */}
+      {images.length > 1 && (
+        <div className="grid grid-cols-2 gap-4">
+          {images.slice(1).map((img, idx) => (
+            <div key={idx} className="relative rounded-xl overflow-hidden border border-white/10 glass-card aspect-video group cursor-pointer shadow-md bg-[#030712]">
+              <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
+              <div className="w-full h-full scale-[1.12] -translate-y-[6%]">
+                <img 
+                  src={img} 
+                  alt={`Screenshot ${idx + 2}`} 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  onError={(e) => { e.target.src = "https://via.placeholder.com/400x225?text=Screenshot" }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const Projects = () => {
   return (
@@ -47,11 +75,9 @@ const Projects = () => {
             {projects.map((project, index) => (
               <div key={project.title} className={`flex flex-col ${index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-10`}>
                 
-                <div className="w-full md:w-3/5 relative group cursor-pointer">
-                  <div className="absolute inset-0 bg-primary/20 rounded-xl blur-lg group-hover:bg-primary/40 transition-all duration-300"></div>
-                  <div className="relative rounded-xl overflow-hidden border border-white/10 glass-card">
-                    <img src={project.image} alt={project.title} className="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300 group-hover:scale-105 transform" onError={(e) => { e.target.src = "https://via.placeholder.com/600x400?text=Project" }} />
-                  </div>
+                <div className="w-full md:w-3/5 relative cursor-pointer">
+                  <div className="absolute inset-0 bg-primary/20 rounded-xl blur-lg transition-all duration-300"></div>
+                  <ProjectGallery images={project.images} />
                 </div>
 
                 <div className={`w-full md:w-2/5 flex flex-col ${index % 2 !== 0 ? 'md:items-start' : 'md:items-end md:text-right'}`}>

@@ -2,12 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const skills = [
-  { name: 'Java', level: 95 },
-  { name: 'Spring Boot', level: 90 },
-  { name: 'MySQL', level: 88 },
-  { name: 'JavaScript', level: 82 },
-  { name: 'REST APIs', level: 90 },
-  { name: 'HTML & CSS', level: 85 },
+  { name: 'Java', level: 85 },
+  { name: 'Spring Boot', level: 82 },
+  { name: 'MySQL', level: 80 },
+  { name: 'JavaScript', level: 81 },
+  { name: 'REST APIs', level: 84 },
+  { name: 'HTML & CSS', level: 83 },
 ];
 
 const Skills = () => {

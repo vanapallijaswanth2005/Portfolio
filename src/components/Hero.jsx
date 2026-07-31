@@ -10,7 +10,7 @@ const Hero = () => {
   useEffect(() => {
     const typed = new Typed(el.current, {
       strings: [
-        'Java Full Stack Developer',
+        'Full Stack Developer',
         'Backend Engineer',
         'Spring Boot Enthusiast',
         'Problem Solver'
@@ -32,10 +32,11 @@ const Hero = () => {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[100px] mix-blend-screen" />
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 z-10 text-center">
+      <div className="container mx-auto px-6 md:px-12 z-10 flex flex-col md:flex-row items-center justify-between gap-12">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          className="w-full md:w-1/2 text-left"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
           <p className="text-accent font-medium tracking-wide mb-4">👋 Hello, I'm</p>
@@ -48,22 +49,32 @@ const Hero = () => {
             <span ref={el}></span>
           </div>
           
-          <div className="flex flex-wrap items-center justify-center gap-4 text-gray-400 mb-12">
+          <div className="flex flex-wrap items-center gap-4 text-gray-400 mb-12">
             <span className="px-4 py-2 glass-card">Java</span>
             <span className="px-4 py-2 glass-card">Spring Boot</span>
             <span className="px-4 py-2 glass-card">REST APIs</span>
             <span className="px-4 py-2 glass-card">DSA</span>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <a href="/resume.pdf" download className="px-8 py-4 bg-primary text-white rounded-full font-medium flex items-center gap-2 hover:bg-blue-600 transition-colors shadow-[0_0_20px_rgba(37,99,235,0.4)]">
-              <Download size={20} />
-              Download Resume
-            </a>
-            <Link to="projects" smooth={true} duration={500} className="px-8 py-4 glass-card text-white rounded-full font-medium cursor-pointer hover:bg-white/10 transition-colors">
+          <div className="flex flex-col sm:flex-row items-center gap-6">
+            <Link to="projects" smooth={true} duration={500} className="px-8 py-4 bg-primary text-white rounded-full font-medium cursor-pointer hover:bg-blue-600 transition-colors shadow-[0_0_20px_rgba(37,99,235,0.4)]">
               View Projects
             </Link>
           </div>
+        </motion.div>
+
+        <motion.div 
+          className="w-full md:w-1/2 relative hidden md:block"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+           <div className="absolute inset-0 bg-primary/20 rounded-xl blur-2xl transition-all duration-300"></div>
+           <div className="relative rounded-xl overflow-hidden border border-white/10 glass-card bg-[#030712]">
+              <div className="w-full h-full scale-[1.12] -translate-y-[6%]">
+                 <img src="/careerlink-admin.png" alt="Dashboard" className="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity duration-300 hover:scale-105 transform" />
+              </div>
+           </div>
         </motion.div>
 
         <motion.div

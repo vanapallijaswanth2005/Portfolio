@@ -45,9 +45,6 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          <a href="#resume" className="px-5 py-2 bg-primary/20 text-primary border border-primary/50 rounded-full hover:bg-primary hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(37,99,235,0.3)]">
-            Resume
-          </a>
         </div>
 
         {/* Mobile Toggle */}
@@ -71,9 +68,6 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          <a href="#resume" className="px-6 py-2 bg-primary text-white rounded-full font-medium">
-            Download Resume
-          </a>
         </div>
       )}
     </nav>

@@ -8,7 +8,6 @@ import Projects from './components/Projects'
 import Stats from './components/Stats'
 import Timeline from './components/Timeline'
 import Certifications from './components/Certifications'
-import GithubStats from './components/GithubStats'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
@@ -25,7 +24,6 @@ function App() {
           <Stats />
           <Timeline />
           <Certifications />
-          <GithubStats />
           <Contact />
         </main>
         <Footer />

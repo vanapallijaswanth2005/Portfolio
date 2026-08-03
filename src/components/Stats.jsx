@@ -31,7 +31,7 @@ const Stats = () => {
                 {stat.plus && '+'}
                 {stat.percent && '%'}
               </h3>
-              <p className="text-gray-400 font-medium">{stat.label}</p>
+              <p className="text-gray-600 dark:text-gray-400 font-medium">{stat.label}</p>
             </motion.div>
           ))}
         </div>

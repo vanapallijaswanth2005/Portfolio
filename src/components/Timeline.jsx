@@ -18,7 +18,7 @@ const Timeline = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold font-poppins mb-16 text-center text-white">
+          <h2 className="text-4xl font-bold font-poppins mb-16 text-center text-gray-900 dark:text-white">
             <span className="text-primary">04.</span> My Journey
           </h2>
 
@@ -40,8 +40,8 @@ const Timeline = () => {
                       className="glass-card p-6 inline-block w-full"
                     >
                       <span className="text-primary font-bold text-xl mb-2 block">{item.year}</span>
-                      <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                      <p className="text-gray-400">{item.description}</p>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{item.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-400">{item.description}</p>
                     </motion.div>
                   </div>
                 </div>

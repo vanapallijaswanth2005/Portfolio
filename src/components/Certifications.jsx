@@ -55,7 +55,7 @@ const certificationsData = [
 
 const Certifications = () => {
   return (
-    <section id="certifications" className="py-20 bg-white/5">
+    <section id="certifications" className="py-20 bg-black/5 dark:bg-white/5">
       <div className="container mx-auto px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -63,13 +63,13 @@ const Certifications = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold font-poppins mb-12 text-center text-white">
+          <h2 className="text-4xl font-bold font-poppins mb-12 text-center text-gray-900 dark:text-white">
             <span className="text-primary">05.</span> Certifications
           </h2>
 
           <div className="max-w-3xl mx-auto space-y-6">
             {certificationsData.map((cert, index) => (
-              <div key={index} className="glass-card-hover p-8 border border-primary/30 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden group rounded-2xl bg-white/5 backdrop-blur-lg">
+              <div key={index} className="glass-card-hover p-8 border border-primary/30 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden group rounded-2xl bg-black/5 dark:bg-white/5 backdrop-blur-lg">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-3xl -mr-10 -mt-10 transition-all duration-500 group-hover:bg-primary/40"></div>
                 
                 <div className="flex items-center gap-6 z-10 w-full md:w-auto">
@@ -77,12 +77,12 @@ const Certifications = () => {
                     <Award size={32} className="text-accent" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-white mb-2">{cert.title}</h3>
-                    <p className="text-gray-400">Issued by <span className="text-primary font-medium">{cert.issuer}</span> &bull; {cert.year}</p>
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{cert.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-400">Issued by <span className="text-primary font-medium">{cert.issuer}</span> &bull; {cert.year}</p>
                   </div>
                 </div>
 
-                <a href={cert.link} target="_blank" rel="noopener noreferrer" className="px-6 py-2 border border-accent text-accent rounded-full hover:bg-accent hover:text-white transition-colors flex items-center justify-center gap-2 z-10 w-full md:w-auto shrink-0">
+                <a href={cert.link} target="_blank" rel="noopener noreferrer" className="px-6 py-2 border border-accent text-accent rounded-full hover:bg-accent hover:text-gray-900 dark:text-white transition-colors flex items-center justify-center gap-2 z-10 w-full md:w-auto shrink-0">
                   View Certificate <ExternalLink size={16} />
                 </a>
               </div>

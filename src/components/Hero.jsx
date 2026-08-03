@@ -41,15 +41,15 @@ const Hero = () => {
         >
           <p className="text-accent font-medium tracking-wide mb-4">👋 Hello, I'm</p>
           <h1 className="text-5xl md:text-7xl font-bold font-poppins mb-6">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-400">
               VANAPALLI JASWANTH
             </span>
           </h1>
-          <div className="text-2xl md:text-3xl text-gray-300 font-medium mb-8 h-10">
+          <div className="text-2xl md:text-3xl text-gray-700 dark:text-gray-300 font-medium mb-8 h-10">
             <span ref={el}></span>
           </div>
           
-          <div className="flex flex-wrap items-center gap-4 text-gray-400 mb-12">
+          <div className="flex flex-wrap items-center gap-4 text-gray-600 dark:text-gray-400 mb-12">
             <span className="px-4 py-2 glass-card">Java</span>
             <span className="px-4 py-2 glass-card">Spring Boot</span>
             <span className="px-4 py-2 glass-card">REST APIs</span>
@@ -64,14 +64,14 @@ const Hero = () => {
         </motion.div>
 
         <motion.div 
-          className="w-full md:w-1/2 relative hidden md:block"
+          className="w-full md:w-1/2 relative hidden md:flex justify-center items-center"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-           <div className="absolute inset-0 bg-primary/20 rounded-xl blur-2xl transition-all duration-300"></div>
-           <div className="relative rounded-xl overflow-hidden border border-white/10 glass-card bg-[#030712] aspect-[4/3] flex items-center justify-center">
-              <img src="/hero-art.png" alt="Futuristic Development Art" className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300 hover:scale-105 transform" />
+           <div className="absolute w-80 h-80 bg-primary/30 rounded-full blur-3xl transition-all duration-300"></div>
+           <div className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-primary/20 glass-card shadow-2xl flex items-center justify-center bg-transparent">
+              <img src="/hero-profile.png" alt="Jaswanth Vanapalli" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
            </div>
         </motion.div>
 

@@ -1,65 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Github, ArrowRight, Briefcase, ShoppingCart, User } from 'lucide-react';
 
 const projects = [
   {
     title: 'CareerLink - Placement Portal',
-    description: 'An enterprise-level full-stack backend application that simplifies the placement process. It features secure JWT authentication, role-based authorization, resume parsing, cloud storage, and intuitive dashboards for students, recruiters, and admins.',
-    tech: ['Java 21', 'Spring Boot 3.4', 'JWT', 'MySQL', 'AWS S3', 'React'],
+    description: 'An enterprise-level full-stack backend application that simplifies the placement process. It features secure JWT authentication, role-based authorization, and intuitive dashboards.',
+    tech: ['Java', 'Spring Boot', 'MySQL', 'AWS'],
     github: '#',
     demo: '#',
-    images: [
-      '/careerlink-admin.png',
-      '/careerlink-student.png',
-      '/careerlink-company.png'
-    ]
+    icon: Briefcase
+  },
+  {
+    title: 'E-Commerce Website',
+    description: 'A responsive e-commerce platform with product filtering, cart, and secure checkout functionality.',
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    github: '#',
+    demo: '#',
+    icon: ShoppingCart
+  },
+  {
+    title: 'Portfolio Website',
+    description: 'A personal portfolio website to showcase my skills, projects, and experience.',
+    tech: ['React', 'Tailwind CSS'],
+    github: '#',
+    demo: '#',
+    icon: User
   }
 ];
 
-const ProjectGallery = ({ images }) => {
-  if (!images || images.length === 0) return null;
-
-  return (
-    <div className="flex flex-col gap-4">
-      {/* Main Image */}
-      <div className="relative rounded-xl overflow-hidden border border-white/10 glass-card aspect-video group cursor-pointer shadow-lg bg-[#030712]">
-        <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
-        <div className="w-full h-full scale-[1.12] -translate-y-[6%]">
-          <img 
-            src={images[0]} 
-            alt="Dashboard Screenshot" 
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            onError={(e) => { e.target.src = "https://via.placeholder.com/800x450?text=Dashboard" }}
-          />
-        </div>
-      </div>
-      
-      {/* Thumbnails */}
-      {images.length > 1 && (
-        <div className="grid grid-cols-2 gap-4">
-          {images.slice(1).map((img, idx) => (
-            <div key={idx} className="relative rounded-xl overflow-hidden border border-white/10 glass-card aspect-video group cursor-pointer shadow-md bg-[#030712]">
-              <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
-              <div className="w-full h-full scale-[1.12] -translate-y-[6%]">
-                <img 
-                  src={img} 
-                  alt={`Screenshot ${idx + 2}`} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  onError={(e) => { e.target.src = "https://via.placeholder.com/400x225?text=Screenshot" }}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-};
-
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 relative">
+    <section id="projects" className="py-20 relative bg-gray-50/50 dark:bg-[#030712]">
       <div className="container mx-auto px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -67,44 +39,54 @@ const Projects = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold font-poppins mb-12 text-center text-white">
-            <span className="text-primary">03.</span> Featured Projects
-          </h2>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div>
+              <h2 className="text-3xl font-bold font-poppins text-gray-900 dark:text-white">
+                Featured Projects
+              </h2>
+            </div>
+            <a href="#" className="text-primary font-medium flex items-center gap-2 hover:underline">
+              View All Projects <ArrowRight size={16} />
+            </a>
+          </div>
 
-          <div className="space-y-24">
-            {projects.map((project, index) => (
-              <div key={project.title} className={`flex flex-col ${index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-10`}>
-                
-                <div className="w-full md:w-5/12 relative cursor-pointer">
-                  <div className="absolute inset-0 bg-primary/20 rounded-xl blur-lg transition-all duration-300"></div>
-                  <ProjectGallery images={project.images} />
-                </div>
-
-                <div className={`w-full md:w-7/12 flex flex-col ${index % 2 !== 0 ? 'md:items-start' : 'md:items-end md:text-right'}`}>
-                  <p className="text-accent font-mono mb-2">Featured Project</p>
-                  <h3 className="text-3xl font-bold font-poppins mb-6 text-white">{project.title}</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {projects.map((project, index) => {
+              const Icon = project.icon;
+              return (
+                <div key={index} className="flex flex-col h-full bg-white dark:bg-[#030712] border border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:shadow-xl dark:hover:shadow-[0_0_20px_rgba(37,99,235,0.1)] transition-all group">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary shrink-0 group-hover:scale-110 transition-transform">
+                      <Icon size={24} />
+                    </div>
+                    <div className="flex flex-col mt-1">
+                      <h3 className="font-bold text-gray-900 dark:text-white text-lg leading-tight">{project.title}</h3>
+                    </div>
+                  </div>
                   
-                  <div className="glass-card p-6 mb-6 z-10 w-full shadow-xl">
-                    <p className="text-gray-300 leading-relaxed">{project.description}</p>
-                  </div>
-
-                  <ul className={`flex flex-wrap gap-4 mb-8 text-gray-400 font-mono text-sm ${index % 2 !== 0 ? 'justify-start' : 'md:justify-end'}`}>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                    {project.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {project.tech.map(tech => (
-                      <li key={tech} className="px-3 py-1 bg-white/5 rounded-full">{tech}</li>
+                      <span key={tech} className="px-3 py-1 bg-gray-100 dark:bg-gray-800/80 text-gray-600 dark:text-gray-300 text-[11px] uppercase tracking-wider rounded-md font-medium">
+                        {tech}
+                      </span>
                     ))}
-                  </ul>
-
-                  <div className="flex gap-4 text-gray-300">
-                    <a href={project.github} className="hover:text-primary transition-colors">
-                      <Github size={24} />
+                  </div>
+                  
+                  <div className="pt-4 border-t border-gray-100 dark:border-gray-800/60 flex justify-between items-center">
+                    <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
+                      View Project <ArrowRight size={16} />
                     </a>
-                    <a href={project.demo} className="hover:text-primary transition-colors">
-                      <ExternalLink size={24} />
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                      <Github size={18} />
                     </a>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </motion.div>
       </div>

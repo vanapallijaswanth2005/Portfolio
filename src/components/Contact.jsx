@@ -16,6 +16,12 @@ const Contact = () => {
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
 
+    if (serviceId === 'your_service_id_here' || serviceId === 'YOUR_SERVICE_ID') {
+      alert("EmailJS is not configured! Please add your actual Service ID, Template ID, and Public Key to the .env.local file.");
+      setIsSubmitting(false);
+      return;
+    }
+
     emailjs.sendForm(serviceId, templateId, form.current, {
       publicKey: publicKey,
     }).then(
@@ -42,14 +48,14 @@ const Contact = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold font-poppins mb-12 text-center text-white">
+          <h2 className="text-4xl font-bold font-poppins mb-12 text-center text-gray-900 dark:text-white">
             <span className="text-primary">07.</span> Get In Touch
           </h2>
 
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-12">
             
             <div className="w-full md:w-1/3 space-y-8">
-              <p className="text-gray-400 text-lg leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
                 I'm currently looking for new opportunities as a Software Development Engineer. 
                 Whether you have a question or just want to say hi, I'll try my best to get back to you!
               </p>
@@ -60,8 +66,8 @@ const Contact = () => {
                     <Mail size={24} />
                   </div>
                   <div>
-                    <h4 className="text-white font-medium">Email</h4>
-                    <a href="mailto:vanapallijaswanth2005@gmail.com" className="text-gray-400 hover:text-primary transition-colors">
+                    <h4 className="text-gray-900 dark:text-white font-medium">Email</h4>
+                    <a href="mailto:vanapallijaswanth2005@gmail.com" className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
                       vanapallijaswanth2005@gmail.com
                     </a>
                   </div>
@@ -72,8 +78,8 @@ const Contact = () => {
                     <Phone size={24} />
                   </div>
                   <div>
-                    <h4 className="text-white font-medium">Phone</h4>
-                    <p className="text-gray-400">+91 8179114025</p>
+                    <h4 className="text-gray-900 dark:text-white font-medium">Phone</h4>
+                    <p className="text-gray-600 dark:text-gray-400">+91 8179114025</p>
                   </div>
                 </div>
                 
@@ -82,8 +88,8 @@ const Contact = () => {
                     <MapPin size={24} />
                   </div>
                   <div>
-                    <h4 className="text-white font-medium">Location</h4>
-                    <p className="text-gray-400">Visakhapatnam, Andhra Pradesh</p>
+                    <h4 className="text-gray-900 dark:text-white font-medium">Location</h4>
+                    <p className="text-gray-600 dark:text-gray-400">Visakhapatnam, Andhra Pradesh</p>
                   </div>
                 </div>
               </div>
@@ -93,17 +99,17 @@ const Contact = () => {
               <form ref={form} onSubmit={sendEmail} className="glass-card p-8 flex flex-col gap-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col">
-                    <label className="text-gray-300 text-sm mb-2">Your Name</label>
-                    <input type="text" name="user_name" required className="bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors" placeholder="John Doe" />
+                    <label className="text-gray-700 dark:text-gray-300 text-sm mb-2">Your Name</label>
+                    <input type="text" name="user_name" required className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-lg px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-primary transition-colors" />
                   </div>
                   <div className="flex flex-col">
-                    <label className="text-gray-300 text-sm mb-2">Your Email</label>
-                    <input type="email" name="user_email" required className="bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors" placeholder="john@example.com" />
+                    <label className="text-gray-700 dark:text-gray-300 text-sm mb-2">Your Email</label>
+                    <input type="email" name="user_email" required className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-lg px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-primary transition-colors" />
                   </div>
                 </div>
                 <div className="flex flex-col">
-                  <label className="text-gray-300 text-sm mb-2">Message</label>
-                  <textarea name="message" required rows="5" className="bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors resize-none" placeholder="Hello Jaswanth..."></textarea>
+                  <label className="text-gray-700 dark:text-gray-300 text-sm mb-2">Message</label>
+                  <textarea name="message" required rows="5" className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-lg px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-primary transition-colors resize-none" placeholder="Hello Jaswanth..."></textarea>
                 </div>
                 
                 <button 

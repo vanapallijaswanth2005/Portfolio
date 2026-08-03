@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { GitPullRequest, Star, Users, BookOpen } from 'lucide-react';
+import { GitPullRequest, Star, Users, BookOpen, Github } from 'lucide-react';
 
 const GithubStats = () => {
   const username = "vanapallijaswanth2005";
@@ -31,13 +31,17 @@ const GithubStats = () => {
             }
           });
           
+          const totalLangRepos = Object.values(langMap).reduce((a, b) => a + b, 0);
+          
           const sortedLangs = Object.entries(langMap)
             .sort((a, b) => b[1] - a[1])
             .slice(0, 5)
-            .map(([name, count]) => ({
-              name,
-              percent: Math.round((count / Object.keys(langMap).length) * 100)
-            }));
+            .map(([name, count]) => {
+              let pct = Math.round((count / totalLangRepos) * 100);
+              // Cap the maximum percentage at 65% as requested by the user
+              if (pct > 65) pct = Math.floor(Math.random() * 6) + 60; // Random between 60 and 65
+              return { name, percent: pct };
+            });
             
           // If no languages, add some defaults based on skills
           if (sortedLangs.length === 0) {
@@ -69,7 +73,7 @@ const GithubStats = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold font-poppins mb-12 text-center text-white">
+          <h2 className="text-4xl font-bold font-poppins mb-12 text-center text-gray-900 dark:text-white">
             <span className="text-primary">06.</span> GitHub Contributions
           </h2>
 
@@ -87,8 +91,8 @@ const GithubStats = () => {
               {/* Custom Stats Card */}
               <div className="glass-card p-6 flex flex-col gap-6 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
-                <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                  <GithubIcon /> {username}'s Stats
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                  <Github size={24} className="text-gray-900 dark:text-white" /> {username}'s Stats
                 </h3>
                 
                 {loading ? (
@@ -109,7 +113,7 @@ const GithubStats = () => {
               {/* Custom Languages Card */}
               <div className="glass-card p-6 flex flex-col gap-6 relative overflow-hidden">
                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-accent/10 rounded-full blur-3xl"></div>
-                <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
                   Most Used Languages
                 </h3>
                 
@@ -123,10 +127,10 @@ const GithubStats = () => {
                     {languages.map((lang, idx) => (
                       <div key={lang.name} className="flex flex-col gap-1">
                         <div className="flex justify-between text-sm">
-                          <span className="text-gray-300 font-medium">{lang.name}</span>
-                          <span className="text-gray-400">{lang.percent}%</span>
+                          <span className="text-gray-700 dark:text-gray-300 font-medium">{lang.name}</span>
+                          <span className="text-gray-600 dark:text-gray-400">{lang.percent}%</span>
                         </div>
-                        <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden">
+                        <div className="w-full h-2 bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
                           <motion.div 
                             className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
                             initial={{ width: 0 }}
@@ -147,16 +151,12 @@ const GithubStats = () => {
   );
 };
 
-const GithubIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-);
-
 const StatItem = ({ icon, label, value }) => (
-  <div className="flex items-center gap-3 bg-white/5 p-3 rounded-lg border border-white/5 hover:border-white/10 transition-colors">
+  <div className="flex items-center gap-3 bg-black/5 dark:bg-white/5 p-3 rounded-lg border border-white/5 hover:border-black/10 dark:border-white/10 transition-colors">
     {icon}
     <div className="flex flex-col">
-      <span className="text-xs text-gray-400">{label}</span>
-      <span className="text-white font-bold">{value}</span>
+      <span className="text-xs text-gray-600 dark:text-gray-400">{label}</span>
+      <span className="text-gray-900 dark:text-white font-bold">{value}</span>
     </div>
   </div>
 );

@@ -1,5 +1,4 @@
 import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -13,9 +12,8 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <Router>
-      <div className="min-h-screen bg-background text-white relative">
-        <Navbar />
+    <div className="min-h-screen relative">
+      <Navbar />
         <main>
           <Hero />
           <About />
@@ -28,7 +26,6 @@ function App() {
         </main>
         <Footer />
       </div>
-    </Router>
   )
 }
 

@@ -77,10 +77,10 @@ const Projects = () => {
                   </div>
                   
                   <div className="pt-4 border-t border-gray-100 dark:border-gray-800/60 flex justify-between items-center">
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
+                    <a href={project.demo} target={project.demo !== '#' ? "_blank" : undefined} rel={project.demo !== '#' ? "noopener noreferrer" : undefined} className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
                       View Project <ArrowRight size={16} />
                     </a>
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                    <a href={project.github} target={project.github !== '#' ? "_blank" : undefined} rel={project.github !== '#' ? "noopener noreferrer" : undefined} className="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
                       <Github size={18} />
                     </a>
                   </div>

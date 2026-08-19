@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, ArrowRight, Briefcase, ShoppingCart, User } from 'lucide-react';
+import { Github, ArrowRight, Briefcase, Link, User } from 'lucide-react';
 
 const projects = [
   {
@@ -12,12 +12,12 @@ const projects = [
     icon: Briefcase
   },
   {
-    title: 'E-Commerce Website',
-    description: 'A responsive e-commerce platform with product filtering, cart, and secure checkout functionality.',
-    tech: ['HTML', 'CSS', 'JavaScript'],
+    title: 'URL Shortener',
+    description: 'A URL shortening service that takes long URLs and generates short, easy-to-share links. Features analytics and custom aliases.',
+    tech: ['React', 'Node.js', 'MongoDB'],
     github: '#',
     demo: '#',
-    icon: ShoppingCart
+    icon: Link
   },
   {
     title: 'Portfolio Website',

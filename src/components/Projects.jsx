@@ -15,7 +15,7 @@ const projects = [
     title: 'URL Shortener',
     description: 'A URL shortening service that takes long URLs and generates short, easy-to-share links. Features analytics and custom aliases.',
     tech: ['React', 'Node.js', 'MongoDB'],
-    github: '#',
+    github: 'https://github.com/vanapallijaswanth2005/URL_SHORTENER',
     demo: '#',
     icon: Link
   },
